@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import cgi
+import re
 
 print("Content-Type: text/html; charset=utf-8\n\n")
 
