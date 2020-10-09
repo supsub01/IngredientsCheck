@@ -15,4 +15,4 @@ Under Construction:
 Website development has begun. 
 I am currently working on using CGI to communicate between my HTML form and the python script. 
 
-<b> Happy Checking! :) </b>
+<b> Happy Ingredient Checking! :) </b>
