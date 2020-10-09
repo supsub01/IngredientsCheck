@@ -1,9 +1,7 @@
 #!"C:\Users\supri\Anaconda3\python.exe"
 
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import re
+from selenium.common.exceptions import NoSuchElementException
 import cgi
 
 print("Content-Type: text/html; charset=utf-8\n\n")
@@ -36,7 +34,14 @@ ProdIndex=0
 
 while i<5:
     CommentSelector=f'#search-page > div > div > div.panel-body > div > div > ul > li:nth-child({i}) > div > div.details-col > div.bottom-row.row > div.comments-col.col-sm-2.col-xs-3 > span'
-    CommentElem=browser.find_element_by_css_selector(CommentSelector)
+    try:
+        CommentElem= browser.find_element_by_css_selector(CommentSelector)
+    except NoSuchElementException:
+        if i==1:
+            print("Can't find product details, Sorry!")
+            return;
+        else:
+            break
     NumComments=int(CommentElem.text)
     if NumComments > MaxComments:
         MaxComments=NumComments
